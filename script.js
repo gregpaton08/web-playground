@@ -1,5 +1,6 @@
 const dropZone = document.getElementById('drop-zone');
 const schemaElement = document.getElementById('schema');
+const statsList = document.getElementById('stats-list');
 
 // Prevent default browser behavior for drag and drop events
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -24,6 +25,7 @@ function handleDrop(e) {
         const data = JSON.parse(reader.result);
         const schema = getSchema("root", data);
         schemaElement.innerHTML = `<pre>${JSON.stringify(schema, null, 2)}</pre>`;
+        displayStats(data);
       }
       reader.readAsText(file);
     } else {
@@ -105,4 +107,32 @@ function getSchema(id, obj) {
       'type': typeof obj
     };
   }
+}
+
+
+function displayStats(data) {
+  statsList.innerHTML = '';
+
+  const outerListLength = Array.isArray(data) ? data.length : 'N/A';
+  const listItem = document.createElement('li');
+  listItem.textContent = `Length of outer list: ${outerListLength}`;
+  statsList.appendChild(listItem);
+
+  // Add more statistics as needed
+}
+
+// Event listener for key clicks
+schemaElement.addEventListener('click', (e) => {
+  console.log("schema add event listener");
+    if (e.target.classList.contains('key')) {
+      const key = e.target.dataset.key;
+      console.log("add event listener for " + key);
+        handleKeyClick(key);
+    }
+});
+
+// Function to handle key click
+function handleKeyClick(key) {
+    console.log(`Key clicked: ${key}`);
+    // Add your custom logic here
 }

@@ -1,0 +1,30 @@
+pre {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  white-space: pre-wrap;
+}
+
+#drop-zone {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+}
+
+#container {
+  display: flex;
+}
+
+#schema {
+  flex: 1;
+}
+
+#stats {
+  width: 300px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  margin-left: 20px;
+}
